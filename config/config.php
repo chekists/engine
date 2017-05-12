@@ -9,19 +9,19 @@
 
 		public function getUserNameDb()
 		{
-			return $this->$userNameDb;
+			return $this->userNameDb;
 		}
 		public function getUserPasswordDb()
 		{
-			return $this->$userPasswordDb;
+			return $this->userPasswordDb;
 		}
 		public function getUserNameAdmin()
 		{
-			return $this->$userNameAdmin;
+			return $this->userNameAdmin;
 		}
 		public function getUserPasswordAdmin()
 		{
-			return $this->$userPasswordAdmin;
+			return $this->userPasswordAdmin;
 		}
 	} 
 ?>
