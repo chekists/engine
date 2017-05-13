@@ -1,15 +1,36 @@
 <?php 
-	include_once 'config/config.php';
-	include_once 'classes/load.php';
-	include_once 'classes/geturl.php';
+	require_once 'config/config.php';
+	require_once 'classes/load.php';
+	require_once 'classes/geturl.php';
+	require_once 'classes/post.php';
 	if ((new GetUrl)->url_mass[1] === 'login') {
-		
+		$post_obj = new Post();
+		$post_userName = $post_obj->getPost('name');
+		$post_userPassword = $post_obj->getPost('password');
+		$config_userName = Config::getUserNameAdmin();
+		$config_userPassword = Config::getUserPasswordAdmin();
+		//echo "$post_userName == $config_userName ; $post_userPassword == $config_userPassword";exit;
+		if ($post_userName===$config_userName && $post_userPassword===$config_userPassword) {
+			setcookie('user', $config_userName, time()+86400, '/');
+			header('location: /');
+		}
+		else
+		{
+			$tpl = new Load('login');
+			echo "<h2> вы ввели неверный логин или пароль</h2><br>";
+			echo $tpl->load();
+			$tpl->clearTplBuffer();
+			unset($tpl);
+		}
 	}
 	else
 	{
 		if ($_COOKIE['user'])
 		{
-
+			$tpl = new Load('index');
+			echo $tpl->load();
+			$tpl->clearTplBuffer();
+			unset($tpl);
 		}
 		else
 		{

@@ -1,27 +1,27 @@
 <?php
 	class Config
 	{
-		private $userNameDb = 'root';
-		private $userPasswordDb = '';
+		private static $userNameDb = 'root';
+		private static $userPasswordDb = '';
 
-		private $userNameAdmin = 'admin';
-		private $userPasswordAdmin = '1234';
+		private static  $userNameAdmin = 'admin';
+		private static $userPasswordAdmin = '1234';
 
-		public function getUserNameDb()
+		public static  function getUserNameDb()
 		{
-			return $this->userNameDb;
+			return self::$userNameDb;
 		}
-		public function getUserPasswordDb()
+		public static  function getUserPasswordDb()
 		{
-			return $this->userPasswordDb;
+			return self::$userPasswordDb;
 		}
-		public function getUserNameAdmin()
+		public static  function getUserNameAdmin()
 		{
-			return $this->userNameAdmin;
+			return self::$userNameAdmin;
 		}
-		public function getUserPasswordAdmin()
+		public static  function getUserPasswordAdmin()
 		{
-			return $this->userPasswordAdmin;
+			return self::$userPasswordAdmin;
 		}
 	} 
 ?>
