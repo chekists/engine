@@ -25,9 +25,16 @@
 	}
 	else
 	{
-		if ($_COOKIE['user'])
+		if ($_COOKIE['user'] ==  Config::getUserNameAdmin())
 		{
-			$tpl = new Load('index');
+			require_once 'controller/additional.php';
+			$tpl_name = ((new GetUrl)->url_mass[1])?(new GetUrl)->url_mass[1]:'index';
+			$tpl = new Load($tpl_name);
+			if ($tpl_name != 'index') {
+				require 'controller/'.$tpl_name.'.php';
+			}
+			$additionalGroups_main = new Additional($tpl);
+
 			echo $tpl->load();
 			$tpl->clearTplBuffer();
 			unset($tpl);
