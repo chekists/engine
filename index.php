@@ -3,7 +3,8 @@
 	require_once 'classes/load.php';
 	require_once 'classes/geturl.php';
 	require_once 'classes/post.php';
-	if ((new GetUrl)->url_mass[1] === 'login') {
+	require_once 'classes/dbmysql.php';
+	if ((new GetUrl)->url_mass[1] === 'login') { // если идем логинится
 		$post_obj = new Post();
 		$post_userName = $post_obj->getPost('name');
 		$post_userPassword = $post_obj->getPost('password');
@@ -23,7 +24,7 @@
 			unset($tpl);
 		}
 	}
-	else
+	else // если уже залогинились
 	{
 		if ($_COOKIE['user'] ==  Config::getUserNameAdmin())
 		{
@@ -31,7 +32,7 @@
 			$tpl_name = ((new GetUrl)->url_mass[1])?(new GetUrl)->url_mass[1]:'index';
 			$tpl = new Load($tpl_name);
 			if ($tpl_name != 'index') {
-				require 'controller/'.$tpl_name.'.php';
+				require 'controller/'.$tpl_name.'.php';// подгружает контент
 			}
 			$additionalGroups_main = new Additional($tpl);
 

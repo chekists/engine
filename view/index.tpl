@@ -47,9 +47,9 @@
 		<div class="main">
 			<nav class="left__nav">
 				<ul class="left__ul">
-				{foreach name=left_menu}
+				{left_menu}
 					<li class="left__li"><a href="" class="left__a">Жара</a></li>
-				{/foreach}	
+				{/left_menu}	
 				</ul>
 			</nav>
 		</div>
